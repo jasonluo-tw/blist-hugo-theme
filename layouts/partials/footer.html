@@ -19,7 +19,7 @@
 {{- partial "search-ui.html" . -}}
 {{ end }}
 
-{{ template "_internal/google_analytics.html" . }}
+{{ template "_internal/google_analytics_async.html" . }}
 
 {{ if ge (len .Site.Languages) 3 }}
 <script>
@@ -55,14 +55,8 @@
     darkmode.addEventListener('click', toggleDarkMode);
   }
 
-  const darkStorage = localStorage.getItem('darkmode');
-  const isBrowserDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  if (!darkStorage && isBrowserDark) {
-    document.documentElement.classList.add('dark');
-  }
-
-  if (darkStorage && darkStorage === 'dark') {
+  const isDark = localStorage.getItem('darkmode');
+  if (isDark && isDark === 'dark') {
     toggleDarkMode();
   }
 </script>
