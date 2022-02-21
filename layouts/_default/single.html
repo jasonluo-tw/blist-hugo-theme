@@ -55,6 +55,8 @@
     </h5>
 
     {{ .Content }}
+    <hr>
+    {{ partial "disqus.html" . }}
   </article>
 
   {{- partial "social.html" . -}}
